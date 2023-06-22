@@ -134,7 +134,7 @@ func run(ppt *Parapermtest) {
 		}
 
 		fmt.Println("=======================")
-		sample_func(&ppt)
+		demo_func(&ppt)
 		time.Sleep(5 * time.Second)
 	}
 }

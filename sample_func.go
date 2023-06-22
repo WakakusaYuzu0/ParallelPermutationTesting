@@ -32,3 +32,6 @@ func sample_func(ppt *Parapermtest) {
 	}
 	return
 }
+
+// testimg パッケージを使う
+// とりあえずglobalに
