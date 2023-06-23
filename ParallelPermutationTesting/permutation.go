@@ -1,6 +1,6 @@
-package permutation
+package parallelpermutationtesting
 
-func Permute(nums []int) [][]int {
+func getPermList(nums []int) [][]int {
 	n := factorial(len(nums))
 	ret := make([][]int, 0, n)
 	permute(nums, &ret)

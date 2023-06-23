@@ -1,12 +1,12 @@
 package main
 
-// import (
-// 	"fmt"
-// )
+import (
+	"fmt"
+)
 
 func main() {
 	// ppt := Parapermtest{
-	// 	isInspection: false,
+	// 	: false,
 	// 	eventIdList:  []int{0, 1, 2},
 	// }
 
@@ -14,7 +14,8 @@ func main() {
 	// fmt.Println(ppt.eventIdList)
 	// time.Sleep(10 * time.Second)
 
-	doTest()
+	// doTest()
+	fmt.Println("test")
 
 	return
 }
