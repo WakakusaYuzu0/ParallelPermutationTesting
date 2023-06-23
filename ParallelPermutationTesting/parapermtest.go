@@ -5,11 +5,12 @@ package parallelpermutationtesting
 // 	"permutation"
 // )
 import (
-	"fmt"
+	"sync"
 	"time"
 )
 
 type Parapermtest struct {
+	mu       sync.Mutex
 	IsDryRun bool
 	// eventIdList []int
 	EventNameList []string
@@ -36,21 +37,19 @@ func (ppt *Parapermtest) WaitEvent(eventName string) bool {
 
 // イベントを登録する
 func (ppt *Parapermtest) addEvent(eventName string) {
-	fmt.Println("add event")
-	// if len(ppt.eventIdList) == 0 {
-	// 	ppt.eventIdList = []int{0}
-	// } else {
-	// 	ppt.eventIdList = append(ppt.eventIdList, ppt.eventIdList[len(ppt.eventIdList)-1]+1)
-	// }
+	// fmt.Println("add event")
+	ppt.mu.Lock()
 	ppt.EventNameList = append(ppt.EventNameList, eventName)
+	ppt.mu.Unlock()
 
 	return
 }
 
 func (ppt *Parapermtest) Done() {
 	if !ppt.IsDryRun {
+		ppt.mu.Lock()
 		ppt.EventNameList = ppt.EventNameList[1:]
-		time.Sleep(1 * time.Second)
+		ppt.mu.Unlock()
 	}
 }
 

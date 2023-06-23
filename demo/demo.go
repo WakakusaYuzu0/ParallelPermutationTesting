@@ -8,25 +8,7 @@ import (
 // 並行処理テストオブジェクトを定義
 var ppt *(parallelpermutationtesting.Parapermtest)
 
-func getOne(ch chan int) {
-	// goroutineの処理単位をWaitEventとDoneで区切る
-	ppt.WaitEvent("getOne")
-	ch <- 1
-	ppt.Done()
-}
-
-func getTwo(ch chan int) {
-	ppt.WaitEvent("getTwo")
-	ch <- 2
-	ppt.Done()
-}
-
-func getThree(ch chan int) {
-	ppt.WaitEvent("getThree")
-	ch <- 3
-	ppt.Done()
-}
-
+// テストしたい関数
 func Demo_func(_ppt *parallelpermutationtesting.Parapermtest) int {
 	// 並行処理テストのインスタンスを受け取る
 	ppt = _ppt
@@ -49,4 +31,26 @@ func Demo_func(_ppt *parallelpermutationtesting.Parapermtest) int {
 	fmt.Println("10 / (c/b - a)", 10/(c/b-a))
 
 	return 10 / (c/b - a)
+}
+
+// goroutineで呼ぶ関数
+func getOne(ch chan int) {
+	// goroutineの処理単位をWaitEventとDoneで区切る
+	ppt.WaitEvent("getOne")
+	ch <- 1
+	ppt.Done()
+}
+
+// goroutineで呼ぶ関数
+func getTwo(ch chan int) {
+	ppt.WaitEvent("getTwo")
+	ch <- 2
+	ppt.Done()
+}
+
+// goroutineで呼ぶ関数
+func getThree(ch chan int) {
+	ppt.WaitEvent("getThree")
+	ch <- 3
+	ppt.Done()
 }
